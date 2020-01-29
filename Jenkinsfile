@@ -16,5 +16,11 @@ pipeline {
       }
     }
 
+    stage('Code Analysis') {
+      steps {
+        powershell 'sonar-scanner'
+      }
+    }
+
   }
 }

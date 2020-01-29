@@ -10,5 +10,11 @@ pipeline {
       }
     }
 
+    stage('Mail Notification') {
+      steps {
+        mail(subject: 'Build Result', body: 'the build has been done', to: 'gk_benaida@esi.dz')
+      }
+    }
+
   }
 }

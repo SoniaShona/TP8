@@ -20,12 +20,13 @@ pipeline {
       parallel {
         stage('Code Analysis') {
           steps {
+            withSonarQubeEnv 'sonar'
             waitForQualityGate true
             powershell 'gradle sonarqube'
           }
         }
 
-        stage('') {
+        stage('error') {
           steps {
             jacoco()
           }

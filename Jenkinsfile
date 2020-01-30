@@ -18,7 +18,9 @@ pipeline {
 
     stage('Code Analysis') {
       steps {
+        withSonarQubeEnv 'localhost:9000'
         waitForQualityGate true
+        powershell 'gradle sonarqube'
       }
     }
 

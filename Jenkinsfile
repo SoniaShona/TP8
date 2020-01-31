@@ -16,12 +16,9 @@ pipeline {
       }
     }
 
-    stage('Code Analysis') {
-      agent any
+    stage('test report') {
       steps {
-        withSonarQubeEnv 'SonarQube'
-        waitForQualityGate true
-        powershell 'gradle sonarqube'
+        jacoco()
       }
     }
 

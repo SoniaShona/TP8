@@ -20,6 +20,7 @@ pipeline {
       steps {
         waitForQualityGate true
         powershell 'gradle sonarqube'
+        withSonarQubeEnv 'sonar'
       }
     }
 

@@ -19,6 +19,7 @@ pipeline {
     stage('test report') {
       steps {
         jacoco()
+        powershell 'gradle jacocoTestCoverageVerification'
       }
     }
 

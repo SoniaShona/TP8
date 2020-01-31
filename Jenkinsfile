@@ -17,6 +17,10 @@ pipeline {
     }
 
     stage('Code Analysis') {
+      agent any
+      environment {
+        PATH = 'D:\\sonar-scanner-cli-4.2.0.1873-windows\\sonar-scanner-4.2.0.1873-windows\\bin'
+      }
       steps {
         withSonarQubeEnv 'sonar'
         waitForQualityGate true

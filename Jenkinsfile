@@ -23,5 +23,11 @@ pipeline {
       }
     }
 
+    stage('Depoly') {
+      steps {
+        powershell 'gradle publishing'
+      }
+    }
+
   }
 }

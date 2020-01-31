@@ -22,7 +22,7 @@ pipeline {
         PATH = 'D:\\sonar-scanner-cli-4.2.0.1873-windows\\sonar-scanner-4.2.0.1873-windows\\bin'
       }
       steps {
-        withSonarQubeEnv 'sonar'
+        withSonarQubeEnv 'sonarQube'
         waitForQualityGate true
         powershell 'gradle sonarqube'
       }

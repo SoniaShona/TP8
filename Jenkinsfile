@@ -17,28 +17,21 @@ pipeline {
     }
 
     stage('test report') {
-      parallel {
-        stage('test report') {
-          steps {
-            jacoco()
-            powershell 'gradle jacocoTestCoverageVerification'
-          }
-        }
-
-        stage('Code analysis') {
-          steps {
-            withSonarQubeEnv 'SonarQube'
-            waitForQualityGate true
-            powershell 'gradle sonarqube'
-          }
-        }
-
+      steps {
+        jacoco()
+        powershell 'gradle jacocoTestCoverageVerification'
       }
     }
 
     stage('Depoly') {
       steps {
         powershell 'gradle publishing'
+      }
+    }
+
+    stage('slack notification') {
+      steps {
+        slackSend(baseUrl: 'https://hooks.slack.com/services/', teamDomain: 'tp6-outil', token: 'TRQ5N6NJH/BRCM572RH/NxnK9GViNA6CDT0wVcota4N8')
       }
     }
 

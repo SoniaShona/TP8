@@ -17,9 +17,20 @@ pipeline {
     }
 
     stage('test report') {
-      steps {
-        jacoco()
-        powershell 'gradle jacocoTestCoverageVerification'
+      parallel {
+        stage('test report') {
+          steps {
+            jacoco()
+            powershell 'gradle jacocoTestCoverageVerification'
+          }
+        }
+
+        stage('') {
+          steps {
+            withSonarQubeEnv 'SonarQube'
+          }
+        }
+
       }
     }
 

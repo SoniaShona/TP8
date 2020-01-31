@@ -19,7 +19,7 @@ pipeline {
     stage('Code Analysis') {
       agent any
       steps {
-        withSonarQubeEnv 'sonarQube'
+        withSonarQubeEnv 'SonarQube'
         waitForQualityGate true
         powershell 'gradle sonarqube'
       }

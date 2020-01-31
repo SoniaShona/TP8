@@ -26,13 +26,15 @@ jacocoTestCoverageVerification {
 
 
 
+
+
 publishing {
     repositories {
         maven {
-            url 'https://mymavenrepo.com/repo/TXjPgLolhofMpx280EIn/'
+            url 'https://mymavenrepo.com/repo/D6f5nRLjLyO3mpVgnqSM/'
             credentials {
                 username 'myMavenRepo'
-                password "0000"
+                password 'azer2020'
             }
         }
     }
@@ -43,6 +45,7 @@ publishing {
         }
     }
 }
+
 
 
 

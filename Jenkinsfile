@@ -17,21 +17,10 @@ pipeline {
     }
 
     stage('Code Analysis') {
-      parallel {
-        stage('Code Analysis') {
-          steps {
-            withSonarQubeEnv 'sonar'
-            waitForQualityGate true
-            powershell 'gradle sonarqube'
-          }
-        }
-
-        stage('error') {
-          steps {
-            jacoco()
-          }
-        }
-
+      steps {
+        withSonarQubeEnv 'sonar'
+        waitForQualityGate true
+        powershell 'gradle sonarqube'
       }
     }
 

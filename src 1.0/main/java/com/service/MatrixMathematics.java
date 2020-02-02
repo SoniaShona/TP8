@@ -95,7 +95,4 @@ public class MatrixMathematics {
 		return transposedMatrix;
 	}
 
-	public static Matrix inverse(Matrix matrix) throws NoSquareException {
-		return (transpose(cofactor(matrix)).multiplyByConstant(1.0/determinant(matrix)));
-	}
 }

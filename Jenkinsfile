@@ -12,7 +12,7 @@ pipeline {
 
     stage('Mail Notification') {
       steps {
-        mail(subject: 'Build Result', body: 'the build has been done', to: 'gl_benaida@esi.dz', from: 'gk_mahboubi@esi.dz')
+        mail(subject: 'Build Result', body: 'the build has been done', to: 'gl_benaida@esi.dz', from: 'gk_mahboubi@esi.dz', cc: 'gl_benaida@esi.dz')
       }
     }
 

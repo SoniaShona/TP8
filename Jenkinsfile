@@ -16,7 +16,7 @@ pipeline {
       }
     }
 
-    stage('test report') {
+    stage('Code analysis') {
       parallel {
         stage('test report') {
           steps {

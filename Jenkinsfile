@@ -12,7 +12,7 @@ pipeline {
 
     stage('Mail Notification') {
       steps {
-        mail(subject: 'Build Result', body: 'the build has been done', to: 'gk_benaida@esi.dz')
+        mail(subject: 'Build Result', body: 'the build has been done', to: 'gl_benaida@esi.dz')
       }
     }
 
@@ -35,18 +35,18 @@ pipeline {
     }
 
     stage('Depoly') {
-      when{
-    branch "master"
-  }
+      when {
+        branch 'master'
+      }
       steps {
         powershell 'gradle publishing'
       }
     }
 
     stage('slack notification') {
-    when{
-    branch "master"
-  }
+      when {
+        branch 'master'
+      }
       steps {
         slackSend(baseUrl: 'https://hooks.slack.com/services/', teamDomain: 'tp6-outil', token: 'TRQ5N6NJH/BRCM572RH/NxnK9GViNA6CDT0wVcota4N8')
       }

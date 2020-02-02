@@ -36,7 +36,7 @@ pipeline {
 
     stage('Depoly') {
       when{
-    branch 'master'
+    tag "release-*"
   }
       steps {
         powershell 'gradle publishing'
@@ -44,9 +44,7 @@ pipeline {
     }
 
     stage('slack notification') {
-      when{
-    branch 'master'
-  }
+    
       steps {
         slackSend(baseUrl: 'https://hooks.slack.com/services/', teamDomain: 'tp6-outil', token: 'TRQ5N6NJH/BRCM572RH/NxnK9GViNA6CDT0wVcota4N8')
       }

@@ -20,14 +20,17 @@ pipeline {
       parallel {
         stage('test report') {
           steps {
-            jacoco()
-            powershell 'gradle jacocoTestCoverageVerification'
+            jacoco(execPattern: 'build/jacoco/*.exec')
           }
         }
 
         stage('Code Analysis') {
           steps {
-            powershell 'gradle sonarqube'
+            withSonarQubeEnv('sonar') {
+              powershell 'gradle sonarqube'
+            }
+
+            waitForQualityGate true
           }
         }
 
